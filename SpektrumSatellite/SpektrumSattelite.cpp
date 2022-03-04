@@ -1,16 +1,16 @@
 //SpektrumSattelite Receiver Libriary
 //Tested with Arduino DUE, Orange RX DSMX and Spektrum DX9
-//To make it work on UNO or similar, change all shorts to ints and select the right serial
+//To make it work on UNO or similar, change all ints to ints and select the right serial
 #include "SpektrumSattelite.h"
 
 bool SpektrumSattelite::getFrame(void)
 {	
-	  while (Serial3.available() >= 16)
+	  while (Serial.available() >= 16)
 	  {
 	  time = millis();
 		for (i = 0; i <= 15; i++)
 		{
-		  inByte = Serial3.read();
+		  inByte = Serial.read();
 		  inData[i] = inByte;
 		}
 	  }
@@ -50,52 +50,52 @@ bool SpektrumSattelite::getTrans()
 	}
 }
 
-short SpektrumSattelite::getChannelValue(short channelId)
+int SpektrumSattelite::getChannelValue(int channelId)
 {
 	return chVal[channelId];
 }
 
-short SpektrumSattelite::getThro()
+int SpektrumSattelite::getThro()
 {
 	return getChannelValue(0);
 }
 
-short SpektrumSattelite::getAile()
+int SpektrumSattelite::getAile()
 {
 	return getChannelValue(1);
 }
 
-short SpektrumSattelite::getElev()
+int SpektrumSattelite::getElev()
 {
 	return getChannelValue(2);
 }
 
-short SpektrumSattelite::getRudd()
+int SpektrumSattelite::getRudd()
 {
 	return getChannelValue(3);
 }
 
-short SpektrumSattelite::getGear()
+int SpektrumSattelite::getGear()
 {
 	return getChannelValue(4);
 }
 
-short SpektrumSattelite::getPitc()
+int SpektrumSattelite::getPitc()
 {
 	return getChannelValue(5);
 }
 
-short SpektrumSattelite::getAux2()
+int SpektrumSattelite::getAux2()
 {
 	return getChannelValue(6);
 }
 
-short SpektrumSattelite::getAux3()
+int SpektrumSattelite::getAux3()
 {
 	return getChannelValue(7);
 }
 
-short SpektrumSattelite::getAux4()
+int SpektrumSattelite::getAux4()
 {
 	return getChannelValue(8);
 }
